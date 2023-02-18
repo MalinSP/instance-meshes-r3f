@@ -12,7 +12,8 @@ void main() {
  vUv = uv;
 
  float offset = randomValue + sin(uTime + 15.0* randomValue);
- offset *= 0.15;
+ offset *= 0.35;
+ // offset *= 0.;
 
  vec4 modelPosition = modelMatrix * instanceMatrix * vec4(position,1.0);
  modelPosition.y += offset;
