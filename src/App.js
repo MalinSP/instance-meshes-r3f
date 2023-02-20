@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Objects from './components/Objects.js'
 import { OrbitControls, OrthographicCamera } from '@react-three/drei'
 import { EffectComposer, SSR } from '@react-three/postprocessing'
-import { useControls } from 'leva'
+import { Leva } from 'leva'
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
           position={[8, 12, 16]}
         />
       </Canvas>
+      {/* <Leva /> */}
     </CanvasContainerWrapper>
   )
 }

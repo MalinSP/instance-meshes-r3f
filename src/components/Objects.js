@@ -11,6 +11,7 @@ import objectFragmentShader from '../shaders/fragment'
 import * as THREE from 'three'
 import { Texture } from 'three'
 import { extend, useFrame } from '@react-three/fiber'
+import { useControls } from 'leva'
 
 const ObjectMaterial = shaderMaterial(
   {
@@ -30,11 +31,14 @@ const o = new THREE.Object3D()
 let random = new Float32Array(count)
 
 export default function Objects() {
+  // const { texturePicture } = useControls({
+  //   texturePicture: { options: ['./sec2.png', './sec1.png'] },
+  // })
   const objectOne = useGLTF('./objects/ob1.glb')
   const objectTwo = useGLTF('./objects/ob2.glb')
   const objectThree = useGLTF('./objects/ob3.glb')
 
-  const texture = useTexture('./sec2.png')
+  // const texture = useTexture(texturePicture)
 
   const ref = useRef()
   const materialRef = useRef()
@@ -44,7 +48,6 @@ export default function Objects() {
   const geometryThree = objectThree.scene.children[0].geometry
 
   useLayoutEffect(() => {
-    console.log(ref.current)
     let index = 0
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < rows; j++) {
@@ -60,12 +63,6 @@ export default function Objects() {
       'randomValue',
       new THREE.InstancedBufferAttribute(random, 1)
     )
-    console.log(ref.current.geometry)
-
-    // ref.current.geometry.setAttribute(
-    //   'aRandom',
-    //   new THREE.InstancedBufferAttribute(random, 1)
-    // )
   }, [])
 
   useFrame((state, delta) => {

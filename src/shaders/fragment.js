@@ -11,7 +11,9 @@ varying vec3 vViewPosition;
 float PI = 3.14159265359;
 
 void main() {
+  
  vec3 normal = normalize(vNormal);
+ //from Mr.Doob
  vec3 viewDir = normalize( vViewPosition );
 	vec3 x = normalize( vec3( viewDir.z, 0.0, - viewDir.x ) );
 	vec3 y = cross( viewDir, x );
@@ -31,6 +33,7 @@ void main() {
  float radialMove = fract(dist - uTime);
  // radialMove *= 1.0 - smoothstep(1.,3.,dist);
  radialMove *= 1.0 - step(uTime, dist);
+ radialMove *= uv.x * 2.2;
 
  float scanMix = smoothstep(0.3,0.0,1.0-radialMove);
  scanMix *= 1.0 + scanColor.r * 0.7; 
